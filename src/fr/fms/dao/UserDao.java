@@ -24,7 +24,7 @@ public class UserDao<T> implements Dao<T> {
 	public void create(T obj) {
 		String sqlInsert = "INSERT INTO T_Users (Login, Password) VALUES (?,?)";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlInsert);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlInsert);
 			ps.setString(1, ((User) obj).getLogin());
 			ps.setString(2, ((User) obj).getPassword());
 			if (ps.executeUpdate() == 1)
@@ -42,7 +42,7 @@ public class UserDao<T> implements Dao<T> {
 	public T read(int id) {
 		String sqlRead = "SELECT * FROM T_Users WHERE IdUser = ?";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlRead);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlRead);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -67,7 +67,7 @@ public class UserDao<T> implements Dao<T> {
 	public boolean update(T obj) {
 		String sqlUpdate = "UPDATE T_Users SET Login = ?, Password = ? WHERE IdUser = ?;";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlUpdate);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlUpdate);
 			ps.setString(1, ((User) obj).getLogin());
 			ps.setString(2, ((User) obj).getPassword());
 			ps.setInt(3, ((User) obj).getId());
@@ -87,7 +87,7 @@ public class UserDao<T> implements Dao<T> {
 	public boolean delete(T obj) {
 		String sqlDelete = "DELETE FROM T_Users WHERE IdUser = ?";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlDelete);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlDelete);
 			ps.setInt(1, ((User) obj).getId());
 			System.out.println("DELETE OK");
 			return ps.executeUpdate() > 0;
@@ -105,7 +105,7 @@ public class UserDao<T> implements Dao<T> {
 	public ArrayList<T> readAll() {
 		ArrayList<User> users = new ArrayList<User>();
 		String sqlSelect = "SELECT * FROM T_Users";
-		try(PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlSelect)) {
+		try(PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlSelect)) {
 			try(ResultSet resultSet = ps.executeQuery(sqlSelect)) {
 				while(resultSet.next()) {
 					int rsIdUser = resultSet.getInt(1);

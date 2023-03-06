@@ -1,7 +1,6 @@
 package fr.fms.dao;
 
 import java.sql.Connection;
-
 import java.util.ArrayList;
 
 /**
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  */
 
 public interface Dao<T> {
-	public Connection conn = BddConnection.getConnection();
+	public Connection conn = SingletonConnection.getConnection();
 	public void create(T obj);
 	public T read(int id);
 	public boolean update(T obj);

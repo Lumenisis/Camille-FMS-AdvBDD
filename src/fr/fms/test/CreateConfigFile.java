@@ -1,7 +1,6 @@
-package fr.fms.dao;
+package fr.fms.test;
 
 import java.io.*;
-
 import java.util.*;
 
 /**

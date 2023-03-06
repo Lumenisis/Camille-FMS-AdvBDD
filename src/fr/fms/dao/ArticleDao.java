@@ -24,7 +24,7 @@ public class ArticleDao<T> implements Dao<T> {
 	public void create(T obj) {
 		String sqlInsert = "INSERT INTO T_Articles (Description, Brand, UnitaryPrice) VALUES (?,?,?)";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlInsert);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlInsert);
 			ps.setString(1, ((Article) obj).getDescription());
 			ps.setString(2, ((Article) obj).getBrand());
 			ps.setDouble(3, ((Article) obj).getPrice());
@@ -43,7 +43,7 @@ public class ArticleDao<T> implements Dao<T> {
 	public T read(int id) {
 		String sqlRead = "SELECT * FROM T_Articles WHERE IdArticle = ?";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlRead);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlRead);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -69,7 +69,7 @@ public class ArticleDao<T> implements Dao<T> {
 	public boolean update(T obj) {
 		String sqlUpdate = "UPDATE T_Articles SET Description = ?, Brand = ?, UnitaryPrice = ? WHERE IdArticle = ?;";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlUpdate);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlUpdate);
 			ps.setString(1, ((Article) obj).getDescription());
 			ps.setString(2, ((Article) obj).getBrand());
 			ps.setDouble(3, ((Article) obj).getPrice());
@@ -90,7 +90,7 @@ public class ArticleDao<T> implements Dao<T> {
 	public boolean delete(T obj) {
 		String sqlDelete = "DELETE FROM T_Articles WHERE IdArticle = ?";
 		try {
-			PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlDelete);
+			PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlDelete);
 			ps.setInt(1, ((Article) obj).getId());
 			System.out.println("DELETE OK");
 			return ps.executeUpdate() > 0;
@@ -108,7 +108,7 @@ public class ArticleDao<T> implements Dao<T> {
 	public ArrayList<T> readAll() {
 		ArrayList<Article> articles = new ArrayList<Article>();
 		String sqlSelect = "SELECT * FROM T_Articles";
-		try(PreparedStatement ps = BddConnection.getConnection().prepareStatement(sqlSelect)) {
+		try(PreparedStatement ps = SingletonConnection.getConnection().prepareStatement(sqlSelect)) {
 			try(ResultSet resultSet = ps.executeQuery(sqlSelect)) {
 				while(resultSet.next()) {
 					int rsIdUser = resultSet.getInt(1);

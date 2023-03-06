@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>files/ClassDiagram.png</name>
+			<type>1</type>
+			<location>C:/Users/GaschetC/Downloads/ClassDiagram.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

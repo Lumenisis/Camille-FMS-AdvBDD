@@ -1,4 +1,4 @@
-package fr.fms.dao;
+package fr.fms.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
