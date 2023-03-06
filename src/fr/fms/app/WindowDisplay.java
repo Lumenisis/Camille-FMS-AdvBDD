@@ -45,48 +45,40 @@ public class WindowDisplay extends JFrame {
 
 	public WindowDisplay() {
 		connect = new JLabel("MariaDB Authentication");
-		connect.setBounds(50, 10, 400, 70);
+		connect.setBounds(250, 10, 400, 70);
 		connect.setFont(fauth);
-		connect.setForeground(Color.black);
+		connect.setBackground(Color.black);
+		connect.setForeground(Color.green);
 		panel.add(connect);
 
 		name = new JLabel("Login");
 		name.setBounds(50, 100, 90, 40);
 		name.setFont(font);
+		name.setBackground(Color.black);
+		name.setForeground(Color.white);
 		panel.add(name);
 		
 		password = new JLabel("Password");
 		password.setBounds(50, 200, 90, 40);
 		password.setFont(font);
+		password.setBackground(Color.black);
+		password.setForeground(Color.white);
 		panel.add(password);
 		
 		tname = new JTextField();
 		tname.setBounds(150, 100, 170, 40);
 		tname.setFont(font);
-		tname.setForeground(Color.blue);
+		tname.setForeground(Color.black);
 		panel.add(tname);
 		
 		tpassword = new JPasswordField();
 		tpassword.setBounds(150, 200, 170, 40);
 		tpassword.setFont(font);
-		tpassword.setForeground(Color.blue);
+		tpassword.setForeground(Color.black);
 		panel.add(tpassword);
-
-		list = new JLabel("SQL results...");
-		list.setBounds(450, 10, 300, 200);
-		list.setFont(font);
-		panel.add(list);
-		list = new JLabel("SQL results...");
-		list.setBounds(450, 10, 300, 300);
-		list.setFont(font);
-		panel.add(list);
-		list = new JLabel("SQL results...");
-		list.setBounds(450, 10, 300, 400);
-		list.setFont(font);
-		panel.add(list);
 		
 		button = new JButton("Connect");
-		button.setBounds(190, 250, 100, 40);
+		button.setBounds(190, 260, 100, 40);
 		button.setFont(fb);
 		button.setBackground(Color.black);
 		button.setForeground(Color.green);
@@ -108,7 +100,6 @@ public class WindowDisplay extends JFrame {
 						} else {
 							JOptionPane.showMessageDialog(null, "Connection refused...");
 						}
-
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -117,10 +108,30 @@ public class WindowDisplay extends JFrame {
 				}
 			}
 		});
+		
+		list = new JLabel("SQL results...");
+		list.setBounds(540, 10, 300, 200);
+		list.setFont(font);
+		list.setBackground(Color.black);
+		list.setForeground(Color.white);
+		panel.add(list);
+		list = new JLabel("SQL results...");
+		list.setBounds(540, 10, 300, 300);
+		list.setFont(font);
+		list.setBackground(Color.black);
+		list.setForeground(Color.white);
+		panel.add(list);
+		list = new JLabel("SQL results...");
+		list.setBounds(540, 10, 300, 400);
+		list.setFont(font);
+		list.setBackground(Color.black);
+		list.setForeground(Color.white);
+		panel.add(list);
 
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 		this.setSize(800, 400);
 		this.setContentPane(panel);
+		panel.setBackground(Color.black);
 	}
 }
