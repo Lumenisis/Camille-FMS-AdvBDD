@@ -15,7 +15,7 @@ import java.util.Properties;
 public class BddConnection {
 
 	CreateConfigFile conf = new CreateConfigFile();
-	public static Properties prop = CreateConfigFile.readPropertiesFile("C:\\Users\\GaschetC\\eclipse-workspace\\AdvBDD\\files\\config.properties");
+	public static Properties prop = CreateConfigFile.readPropertiesFile("\\files\\config.properties");
 	public static Connection conn;
 	public static String driver = prop.getProperty("db.driver.class");
 	public static String url = prop.getProperty("db.url");
